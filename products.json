@@ -1,0 +1,207 @@
+[
+    {
+        "_id": "0282e0e58a5c404fbd15261f11c2ab6a",
+        "others_info": {
+            "is_todays_pick": false,
+            "is_trending": true
+        },
+        "category_id": "01",
+        "rating": {
+            "number": 5.0
+        },
+        "title": "iPhone 13 Pro Max",
+        "seller": {
+            "name": "Syed Technologies",
+            "published_date": "2022-08-24",
+            "img": ""
+        },
+        "image_url": "https://149367133.v2.pressablecdn.com/wp-content/uploads/2021/10/iphone-13-pro-review-thumbnail-v3.jpg",
+        "current_price": "1,39,000",
+        "selling_price": "60,000",
+        "location": "Dhaka",
+        "used": "6 Months"
+    },
+    {
+        "_id": "0282e0e58a5c404fbd15261f11c2ab6b",
+        "others_info": {
+            "is_todays_pick": false,
+            "is_trending": true
+        },
+        "category_id": "03",
+        "rating": {
+            "number": 5.0
+        },
+        "title": "Huawei Mate 20 Pro",
+        "seller": {
+            "name": "Second Gadget",
+            "published_date": "2022-08-24",
+            "img": ""
+        },
+        "image_url": "https://pakistani.pk/uploads/reviews/photos/thumbnail/1500x500s/8a/e6/6c/Huawei-Mate-20-Pro-Price-Comparison-Specs-Reviews-71-1540297559.jpg",
+        "current_price": "1,15,000",
+        "selling_price": "55,000",
+        "location": "Dhaka",
+        "used": "1 Years"
+    },
+    {
+        "_id": "f69a695f037cd9484cecaea37ca71011",
+        "others_info": {
+            "is_todays_pick": false,
+            "is_trending": true
+        },
+        "category_id": "01",
+        "rating": {
+            "number": 5.0,
+            "badge": "Excellent"
+        },
+        "title": "iPhone X 256 GB",
+        "seller": {
+            "name": "Syed Technologies",
+            "published_date": "2022-08-24",
+            "img": ""
+        },
+        "image_url": "https://149367133.v2.pressablecdn.com/wp-content/uploads/2017/10/gadgetmatch-iphone-x-unboxing-20171031-02.jpg",
+        "current_price": "84,220",
+        "selling_price": "24,000",
+        "location": "Dhaka",
+        "used": "4 Months"
+    },
+    {
+        "_id": "f69a695f037cd9484cecaea37ca71012",
+        "others_info": {
+            "is_todays_pick": false,
+            "is_trending": true
+        },
+        "category_id": "02",
+        "rating": {
+            "number": 5.0,
+            "badge": "Excellent"
+        },
+        "title": "Samsung S20 Ultra",
+        "seller": {
+            "name": "GADGET MATCH",
+            "published_date": "2022-08-24",
+            "img": ""
+        },
+        "image_url": "https://149367133.v2.pressablecdn.com/wp-content/uploads/2020/02/200221-GadgetMatch-YouTube-Samsung-Galaxy-S20-Ultra-Unboxing.jpg",
+        "current_price": "1,80,000",
+        "selling_price": "95,000",
+        "location": "Dhaka",
+        "used": "11 Months"
+    },
+    {
+        "_id": "11468ed61aee84de492a8b04158a22f9",
+        "others_info": {
+            "is_todays_pick": false,
+            "is_trending": false
+        },
+        "category_id": "03",
+        "rating": {
+            "number": 5.0,
+            "badge": "Excellent"
+        },
+        "title": "Huawei Mate 40 Pro",
+        "seller": {
+            "name": "Second Gadget",
+            "published_date": "2022-08-24",
+            "img": ""
+        },
+        "image_url": "https://images.indianexpress.com/2020/10/Huawei-Mate-40.jpg",
+        "current_price": "1,60,000",
+        "selling_price": "75,000",
+        "location": "Dhaka",
+        "used": "16 Months"
+    },
+    {
+        "_id": "11468ed61aee84de492a8b04158a22f0",
+        "others_info": {
+            "is_todays_pick": false,
+            "is_trending": false
+        },
+        "category_id": "01",
+        "rating": {
+            "number": 5.0,
+            "badge": "Excellent"
+        },
+        "title": "iPhone 14 Pro Max",
+        "seller": {
+            "name": "Syed Technologies",
+            "published_date": "2022-08-24",
+            "img": ""
+        },
+        "image_url": "https://sg-res.9appsdownloading.com/sg/res/jpg/e9/30/18d01d1b9542eff52dae3fb82cfc-3rp4.jpg?x-oss-process=style/hq",
+        "current_price": "2,84,000",
+        "selling_price": "2,20,000",
+        "location": "Dhaka",
+        "used": "1 Months"
+    },
+    {
+        "_id": "2e78e5e0310c2e9adbb6efb1a263e745",
+        "others_info": {
+            "is_todays_pick": false,
+            "is_trending": true
+        },
+        "category_id": "02",
+        "rating": {
+            "number": 5.0,
+            "badge": "Excellent"
+        },
+        "title": "Samsung Z Flip",
+        "seller": {
+            "name": "GADGET MATCH",
+            "published_date": "2022-08-24",
+            "img": ""
+        },
+        "image_url": "https://www.sammyfans.com/wp-content/uploads/2022/08/Best-Samsung-Galaxy-Z-Flip-4-cases.png",
+        "current_price": "1,90,000",
+        "selling_price": "1,30,000",
+        "location": "Dhaka",
+        "used": "1 Months"
+    },
+    {
+        "_id": "a713ee936ff5574273f0f769f5c5b20e",
+        "others_info": {
+            "is_todays_pick": false,
+            "is_trending": true
+        },
+        "category_id": "03",
+        "rating": {
+            "number": 5.0,
+            "badge": "Excellent"
+        },
+        "title": "Huawei Mate X2",
+        "seller": {
+            "name": "Second Gadget",
+            "published_date": "2022-08-24",
+            "img": ""
+        },
+        "image_url": "https://i.ytimg.com/vi/YX8aUCtkoBA/maxresdefault.jpg",
+        "current_price": "2,00,000",
+        "selling_price": "1,20,000",
+        "location": "Dhaka",
+        "used": "3 Months"
+    },
+    {
+        "_id": "cd2b53655737cc4077542baea9f8f75d",
+        "others_info": {
+            "is_todays_pick": false,
+            "is_trending": true
+        },
+        "category_id": "02",
+        "rating": {
+            "number": 5.0,
+            "badge": "Excellent"
+        },
+        "title": "Samsung Z Fold 4",
+        "seller": {
+            "name": "GADGET MATCH",
+            "published_date": "2022-08-24",
+            "img": ""
+        },
+        "image_url": "https://i.ytimg.com/vi/wOBmwzPh5mk/maxresdefault.jpg",
+        "current_price": "1,45,000",
+        "selling_price": "82,000",
+        "location": "Dhaka",
+        "used": "6 Months"
+    }
+]
