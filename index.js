@@ -5,6 +5,7 @@ const port = process.env.PORT || 5000;
 
 // * Middle Ware * //
 app.use(cors());
+app.use(express.json());
 
 // * Get Category * //
 const categories = require('./categories.json');
@@ -41,7 +42,7 @@ app.get('/products/:id', (req, res) => {
 })
 
 app.get('/', async (req, res) => {
-    res.send('Server Running')
+    res.send('Best Buy Server Running')
 });
 
 app.listen(port, () => console.log(`Best Buy Running on Port ${port}`))
