@@ -37,6 +37,14 @@ async function run() {
             res.send(category);
         })
 
+        // *  Get Booking Data * //
+        app.get('/bookings', async (req, res) => {
+            const email = req.query.email;
+            const query = { email: email };
+            const bookings = await bookingsCollection.find(query).toArray();
+            res.send(bookings);
+        })
+
         // *  Post Booking Data * //
         app.post('/bookings', async (req, res) => {
             const booking = req.body;
@@ -46,9 +54,17 @@ async function run() {
 
         // * Get Specific Booking with ID * //
         app.get('/products', async (req, res) => {
+            const title = req.query.title;
             const query = {};
             const products = await productCollection.find(query).toArray();
-            res.send(products);           
+            const bookingQuery = { title };
+            const alreadyBooked = await bookingCollection.find(bookingQuery).toArray();
+            products.forEach(product => {
+                const productBooked = alreadyBooked.filter(product => product.id === product.name);
+                const bookedProduct = productBooked.map(product => product._id)
+                console.log(product.name ,bookedProduct);
+            })
+            res.send(products);
         })
 
         // * Get Category 1 Data * //
