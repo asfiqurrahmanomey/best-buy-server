@@ -1,45 +1,56 @@
 const express = require('express');
-const app = express();
 const cors = require('cors');
+const { MongoClient, ServerApiVersion } = require('mongodb');
+require('dotenv').config();
 const port = process.env.PORT || 5000;
+
+const app = express();
 
 // * Middle Ware * //
 app.use(cors());
 app.use(express.json());
 
-// * Get Category * //
-const categories = require('./categories.json');
-// * get product * //
-const products = require('./products.json');
+// * MongoDB Connection * //
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.9vhsktv.mongodb.net/?retryWrites=true&w=majority`;
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
-// * get news category list * //
-app.get('/product-category', (req, res) => {
-    res.send(categories)
-})
+// * Find Multiple Documents Using CURD * //
+async function run() {
+    try {
+        // * Category Collection * //
+        const productCategoryCollection = client.db('bestBuy').collection('productCategory');
+        // * Get Products Collection * //
+        const productCollection = client.db('bestBuy').collection('products');
 
-// * get category Items * //
-app.get('/category/:id', (req, res) => {
-    const id = req.params.id;
-    if(id === '04'){
-        res.send(products);
+        // * Get Category Date  from Database* //
+        app.get('/productCategory', async (req, res) => {
+            const query = {};
+            const category = await productCategoryCollection.find(query).toArray();
+            res.send(category);
+        })
+
+        // * Get Specific Booking with ID * //
+        app.get('/productCategory/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = {category_id: category_id};
+            const booking = await productCollection.findOne(query);
+            res.send(booking);
+            console.log(booking);
+        })
+
+        // * Get Specific Booking with ID * //
+        app.get('/products', async (req, res) => {
+            const query = {};
+            const products = await productCollection.find(query).toArray();
+            res.send(products);
+        })
+
     }
-    else{
-        const category_products = products.filter(n => n.category_id === id);
-        res.send(category_products);
+    finally {
+
     }
-})
-
-// *  Get All Products* //
-app.get('/products', (req,res) => {
-    res.send(products);
-})
-
-// * get Products Items * //
-app.get('/products/:id', (req, res) => {
-    const id = req.params.id;
-    const selectedProducts = products.find(p => p._id === id);
-    res.send(selectedProducts);
-})
+}
+run().catch(console.log);
 
 app.get('/', async (req, res) => {
     res.send('Best Buy Server Running')
