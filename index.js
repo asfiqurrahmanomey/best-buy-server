@@ -28,7 +28,7 @@ async function run() {
         // * Get Category 3 * //
         const productCategory3Collection = client.db('bestBuy').collection('category3');
         // * Booking Collection  * //
-        const productCategory3Collection = client.db('bestBuy').collection('category3');
+        const bookingsCollection = client.db('bestBuy').collection('bookings');
 
         // * Get Category Date  from Database* //
         app.get('/productCategory', async (req, res) => {
@@ -37,11 +37,18 @@ async function run() {
             res.send(category);
         })
 
+        // *  Post Booking Data * //
+        app.post('/bookings', async (req, res) => {
+            const booking = req.body;
+            const result = await bookingsCollection.insertOne(booking);
+            res.send(result);
+        })
+
         // * Get Specific Booking with ID * //
         app.get('/products', async (req, res) => {
             const query = {};
             const products = await productCollection.find(query).toArray();
-            res.send(products);
+            res.send(products);           
         })
 
         // * Get Category 1 Data * //
