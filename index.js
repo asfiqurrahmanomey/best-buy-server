@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { MongoClient, ServerApiVersion } = require('mongodb');
+const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const port = process.env.PORT || 5000;
 
@@ -14,6 +15,23 @@ app.use(express.json());
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.9vhsktv.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
+// * Verify JWT * //
+function verifyJWT(req, res, next) {
+
+    const authHeader = req.headers.authorization;
+    if (!authHeader) {
+        return res.status(401).send('Unauthorized accessToken');
+    }
+    const token = authHeader.split(' ')[1];
+
+    jwt.verify(token, process.env.ACCESS_TOKEN, function (err, decoded) {
+        if (err) {
+            return res.status(403).send({ message: 'Access Forbidden' })
+        }
+        req.decoded = decoded;
+        next();
+    })
+}
 // * Find Multiple Documents Using CURD * //
 async function run() {
     try {
@@ -29,6 +47,8 @@ async function run() {
         const productCategory3Collection = client.db('bestBuy').collection('category3');
         // * Booking Collection  * //
         const bookingsCollection = client.db('bestBuy').collection('bookings');
+        // * User Collection  * //
+        const usersCollection = client.db('bestBuy').collection('users');
 
         // * Get Category Date  from Database* //
         app.get('/productCategory', async (req, res) => {
@@ -38,8 +58,14 @@ async function run() {
         })
 
         // *  Get Booking Data * //
-        app.get('/bookings', async (req, res) => {
+        app.get('/bookings', verifyJWT, async (req, res) => {
             const email = req.query.email;
+            const decodedEmail = req.decoded.email;
+
+            if(email !== decodedEmail) {
+                return res.status(403).send({message: 'forbidden access'});
+            }
+
             const query = { email: email };
             const bookings = await bookingsCollection.find(query).toArray();
             res.send(bookings);
@@ -54,16 +80,8 @@ async function run() {
 
         // * Get Specific Booking with ID * //
         app.get('/products', async (req, res) => {
-            const title = req.query.title;
             const query = {};
             const products = await productCollection.find(query).toArray();
-            const bookingQuery = { title };
-            const alreadyBooked = await bookingCollection.find(bookingQuery).toArray();
-            products.forEach(product => {
-                const productBooked = alreadyBooked.filter(product => product.id === product.name);
-                const bookedProduct = productBooked.map(product => product._id)
-                console.log(product.name ,bookedProduct);
-            })
             res.send(products);
         })
 
@@ -84,6 +102,25 @@ async function run() {
             const query = {};
             const products = await productCategory3Collection.find(query).toArray();
             res.send(products);
+        });
+
+        // JWT token
+        app.get('/jwt', async (req, res) => {
+            const email = req.query.email;
+            const query = { email: email };
+            const user = await usersCollection.findOne(query);
+            if(user){
+                const token = jwt.sign({email}, process.env.ACCESS_TOKEN, {expiresIn: '1h'})
+                return res.send({accessToken: token});
+            }
+            res.status(403).send({accessToke: ''});
+        })
+
+        // * User Post * //
+        app.post('/users', async (req, res) => {
+            const user = req.body;
+            const result = await usersCollection.insertOne(user);
+            res.send(result);
         })
 
     }
