@@ -49,6 +49,8 @@ async function run() {
         const bookingsCollection = client.db('bestBuy').collection('bookings');
         // * User Collection  * //
         const usersCollection = client.db('bestBuy').collection('users');
+        // * Add Products  * //
+        const addProductsCollection = client.db('bestBuy').collection('addProducts');
 
         // * Get Category Date  from Database* //
         app.get('/productCategory', async (req, res) => {
@@ -121,6 +123,20 @@ async function run() {
             const query = {};
             const users = await usersCollection.find(query).toArray();
             res.send(users);
+        })
+
+        // add products
+        app.post('/addProducts', async (req, res) => {
+            const product = req.body;
+            const result = await addProductsCollection.insertOne(product);
+            res.send(result);
+        })
+
+        // get products
+        app.get('/addProducts', async (req, res) => {
+            const query = {};
+            const result = await addProductsCollection.find(query).toArray();
+            res.send(result);
         })
 
         // * User Post * //
