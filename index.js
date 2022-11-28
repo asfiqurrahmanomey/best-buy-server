@@ -32,10 +32,13 @@ async function run() {
         // * Get Specific Booking with ID * //
         app.get('/productCategory/:id', async (req, res) => {
             const id = req.params.id;
-            const query = {category_id: category_id};
-            const booking = await productCollection.findOne(query);
-            res.send(booking);
-            console.log(booking);
+            if (id === '04') {
+                res.send(products);
+            }
+            else {
+                const category_products = products.filter(n => n.category_id === id);
+                res.send(category_products);
+            }
         })
 
         // * Get Specific Booking with ID * //
@@ -43,6 +46,13 @@ async function run() {
             const query = {};
             const products = await productCollection.find(query).toArray();
             res.send(products);
+        })
+
+        // * Get Specific Booking with ID * //
+        app.get('/products/:id', async (req, res) => {
+            const id = req.params.id;
+            const selectedProducts = await productCollection.find(p => p._id === id);
+            res.send(selectedProducts);
         })
 
     }
