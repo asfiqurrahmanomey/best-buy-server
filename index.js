@@ -21,6 +21,14 @@ async function run() {
         const productCategoryCollection = client.db('bestBuy').collection('productCategory');
         // * Get Products Collection * //
         const productCollection = client.db('bestBuy').collection('products');
+        // * Get Category 1 * //
+        const productCategory1Collection = client.db('bestBuy').collection('category1');
+        // * Get Category 2 * //
+        const productCategory2Collection = client.db('bestBuy').collection('category2');
+        // * Get Category 3 * //
+        const productCategory3Collection = client.db('bestBuy').collection('category3');
+        // * Booking Collection  * //
+        const productCategory3Collection = client.db('bestBuy').collection('category3');
 
         // * Get Category Date  from Database* //
         app.get('/productCategory', async (req, res) => {
@@ -30,29 +38,29 @@ async function run() {
         })
 
         // * Get Specific Booking with ID * //
-        app.get('/productCategory/:id', async (req, res) => {
-            const id = req.params.id;
-            if (id === '04') {
-                res.send(products);
-            }
-            else {
-                const category_products = products.filter(n => n.category_id === id);
-                res.send(category_products);
-            }
-        })
-
-        // * Get Specific Booking with ID * //
         app.get('/products', async (req, res) => {
             const query = {};
             const products = await productCollection.find(query).toArray();
             res.send(products);
         })
 
-        // * Get Specific Booking with ID * //
-        app.get('/products/:id', async (req, res) => {
-            const id = req.params.id;
-            const selectedProducts = await productCollection.find(p => p._id === id);
-            res.send(selectedProducts);
+        // * Get Category 1 Data * //
+        app.get('/category1', async (req, res) => {
+            const query = {};
+            const products = await productCategory1Collection.find(query).toArray();
+            res.send(products);
+        })
+        // * Get Category 2 Data * //
+        app.get('/category2', async (req, res) => {
+            const query = {};
+            const products = await productCategory2Collection.find(query).toArray();
+            res.send(products);
+        })
+        // * Get Category 2 Data * //
+        app.get('/category3', async (req, res) => {
+            const query = {};
+            const products = await productCategory3Collection.find(query).toArray();
+            res.send(products);
         })
 
     }
