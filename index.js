@@ -106,6 +106,13 @@ async function run() {
             res.send(products);
         });
 
+        // add products
+        app.post('/addProducts', async (req, res) => {
+            const product = req.body;
+            const result = await addProductsCollection.insertOne(product);
+            res.send(result);
+        })
+        
         // JWT token
         app.get('/jwt', async (req, res) => {
             const email = req.query.email;
